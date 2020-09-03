@@ -30,6 +30,7 @@ provider:
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:us-east-2:907738677571:table/notes"
 
 functions:
