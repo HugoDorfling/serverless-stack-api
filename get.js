@@ -8,13 +8,18 @@ export const main = handler(async (event, context) => {
         // - 'userId': Identity Pool identitiy id of the authenticated user
         // - 'noteId': path parameter
         Key: {
-         //   userId: event.requestContext.identity.cognitoIdentityId,
-         //   noteId: event.pathParameters.id
+            userId: event.requestContext.identity.cognitoIdentityId,
+            noteId: event.pathParameters.id
         }
     };
     const result = await dynamoDb.get(params);
     if (!result.Item) {
         throw new Error("Item not found.");
     }
+
+
+    // Set a timeout - remember to delete
+    await new Promise(resolve => setTimeout(resolve,10000));
+
     return result.Item;
 });
